@@ -1,20 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 100  // Maximum size of the stack
 
-int stack[MAX];  // Array to hold stack elements
-int top = -1;    // Stack is empty initially
+#define MAX 100
 
-// Function declarations
+int stack[MAX];
+int top = -1;
+
 void push();
 void pop();
 void peek();
 void display();
 
-int main() {
+int main(){
     int choice;
-
-    while (1) {
+    while(1){
         printf("\n----- Stack Operations (Array Implementation) -----\n");
         printf("1. Push\n");
         printf("2. Pop\n");
@@ -24,7 +23,7 @@ int main() {
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-        switch (choice) {
+        switch(choice){
             case 1:
                 push();
                 break;
@@ -44,57 +43,43 @@ int main() {
                 printf("Invalid choice! Please try again.\n");
         }
     }
-
-    return 0;
 }
 
-// Function to push an element into the stack
-void push() {
+void push(){
     int value;
-
-    if (top == MAX - 1) {
-        printf("Stack Overflow! Cannot push more elements.\n");
+    if(top==MAX-1){
+        printf("Cannot add any more elements into the stack");
         return;
     }
-
     printf("Enter the value to push: ");
-    scanf("%d", &value);
+    scanf("%d",&value);
     top++;
-    stack[top] = value;
-    printf("Element %d pushed successfully.\n", value);
+    stack[top]=value;
 }
 
-// Function to pop the top element from the stack
-void pop() {
-    if (top == -1) {
-        printf("Stack Underflow! No elements to pop.\n");
+void pop(){
+    if(top==-1){
+        printf("Stack empty!");
         return;
     }
-
-    printf("Element %d popped successfully.\n", stack[top]);
+    printf("Popped element: %d\n",stack[top]);
     top--;
 }
 
-// Function to view the top element without removing it
-void peek() {
-    if (top == -1) {
-        printf("Stack is empty! Nothing to peek.\n");
+void peek(){
+    if(top==-1){
+        printf("Stack Empty!");
         return;
     }
-
-    printf("Top element is: %d\n", stack[top]);
+    printf("Top element is : %d\n",stack[top]);
 }
 
-// Function to display all stack elements
-void display() {
-    if (top == -1) {
-        printf("Stack is empty.\n");
+void display(){
+    if(top==-1){
+        printf("Stack Empty!");
         return;
     }
-
-    printf("Current Stack (Top → Bottom): ");
-    for (int i = top; i >= 0; i--) {
-        printf("%d ", stack[i]);
+    for(int i=top;i>=0;i--){
+        printf("%d\n",stack[i]);
     }
-    printf("\n");
 }
